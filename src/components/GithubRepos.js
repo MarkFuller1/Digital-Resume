@@ -43,7 +43,7 @@ export class GithubRepos extends React.Component {
         <TableContainer component={Paper}>
           <Table aria-label="Current Githut Repositories">
             <TableHead>
-              <TableRow classname="MuiTableCell-head">
+              <TableRow className="MuiTableCell-head">
                 <TableCell>Name</TableCell>
                 <TableCell align="center">Description</TableCell>
                 <TableCell align="center">URL</TableCell>
