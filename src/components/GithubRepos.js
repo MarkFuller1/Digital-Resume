@@ -13,8 +13,8 @@ import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650
-  }
+    minWidth: 650,
+  },
 });
 
 export class GithubRepos extends React.Component {
@@ -22,19 +22,24 @@ export class GithubRepos extends React.Component {
     super(props);
 
     this.state = {
-      repos: []
+      repos: [],
     };
   }
 
-  formatDate = date => {
+  formatDate = (date) => {
     return date.getMonth() + "-" + date.getDay() + "-" + date.getFullYear();
   };
 
   componentDidMount() {
     axios({
       method: "GET",
-      url: "https://api.github.com/users/MarkFuller1/repos"
-    }).then(data => this.setState({ repos: data.data }));
+      url: "https://api.github.com/users/MarkFuller1/repos",
+    }).then((data) => {
+      var ordered = data.data.sort((a, b) => {
+        return new Date(b.updated_at) - new Date(a.updated_at);
+      });
+      this.setState({ repos: ordered });
+    });
   }
   render() {
     //const classes = useStyles();
@@ -47,13 +52,13 @@ export class GithubRepos extends React.Component {
                 <TableCell>Name</TableCell>
                 <TableCell align="center">Description</TableCell>
                 <TableCell align="center">URL</TableCell>
-                <TableCell align="center" sortDirection="desc">
+                <TableCell align="center" >
                   Last Updated
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.state.repos.map(row => (
+              {this.state.repos.map((row) => (
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
                     {row.name}
