@@ -4,7 +4,7 @@ import React from "react";
 const BlogHeader = () => {
   return (
     <center style={{padding:"50px"}}>
-        <img src="/Foghlaim.png" width={400}/>
+        <img src="/Foghlaim.png" width={400} alt="Title"/>
     </center>
   );
 };

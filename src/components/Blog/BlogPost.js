@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Interweave, Node } from "interweave";
+import React from "react";
+import { Interweave} from "interweave";
 import { Chip, Typography } from "@material-ui/core";
 
 const isTextComponent = (node) => {
@@ -45,6 +45,7 @@ export const BlogPost = (props) => {
       return (
         <img
           src={node.getAttribute("src")}
+          alt={node.getAttribute("alt")}
           style={{ width: "80%", height: "auto" }}
         />
       );
