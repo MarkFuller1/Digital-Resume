@@ -4,10 +4,10 @@ var constants = require("./constantVars");
 const client = axios.create();
 
 client.defaults.headers["Content-Type"] = "application/json";
-client.defaults.headers["Access-Control-Allow-Origin"] = "*/*";
+client.defaults.headers["Access-Control-Allow-Origin"] = "*/**";
 
 export async function getAllPosts() {
-  return client.get(constants.backend_url + "/posts");
+  return client.get(constants.backend_url + "/posts", {"Access-Control-Allow-Origin": "*","Content-Type":"application/json"});
 }
 
 export async function getAllTags() {

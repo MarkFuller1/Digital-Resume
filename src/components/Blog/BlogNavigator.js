@@ -60,6 +60,7 @@ export const BlogNavigator = (props) => {
       >
         <Paper style={{ padding: "10px", spacing: "10px", width: "18%" }}>
           <TextField
+            autoFocus
             variant="outlined"
             label="Tag Name"
             onBlur={() => setIsModalOpen(false)}
