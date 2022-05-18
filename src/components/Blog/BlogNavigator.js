@@ -10,6 +10,8 @@ import {
 } from "@material-ui/core";
 import * as API from "../../util/api";
 
+var constants = require("../../util/constantVars");
+
 export const BlogNavigator = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -70,9 +72,13 @@ export const BlogNavigator = (props) => {
             </ListItem>
           );
         })}
-        <ListItem button key={"create"}>
-          <ListItemText onClick={createTag}>Create Tag</ListItemText>
-        </ListItem>
+        {constants.local ? (
+          <ListItem button key={"create"}>
+            <ListItemText onClick={createTag}>Create Tag</ListItemText>
+          </ListItem>
+        ) : (
+          <div />
+        )}
       </List>
       <Modal
         style={{ top: "50%", left: "50%" }}

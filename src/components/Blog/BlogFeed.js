@@ -3,6 +3,7 @@ import { Paper, Grid, Divider } from "@material-ui/core";
 import { BlogPost } from "./BlogPost";
 import { BlogEditor } from "./BlogEditor";
 import * as API from "../../util/api";
+
 var constants = require("./../../util/constantVars");
 
 const BlogFeed = (props) => {
