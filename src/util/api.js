@@ -32,7 +32,7 @@ export async function uploadImage(image) {
 }
 
 export async function getPostByTag(tag) {
-  return client.get(constants.backend_url + "/posts/" + tag);
+  return client.get(constants.backend_url + "/posts/tag/" + tag);
 }
 
 export async function saveNewTag(tag) {
