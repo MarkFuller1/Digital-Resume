@@ -4,16 +4,15 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.4",
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
+    "d": "^1.0.1",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
-    "i": "^0.3.7",
     "interweave": "^13.0.0",
     "npm": "^8.7.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-draft-wysiwyg": "^1.14.7",
-    "react-highlight-js": "^0.15.0",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
