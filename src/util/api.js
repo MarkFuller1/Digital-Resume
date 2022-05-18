@@ -7,7 +7,10 @@ client.defaults.headers["Content-Type"] = "application/json";
 client.defaults.headers["Access-Control-Allow-Origin"] = "*/**";
 
 export async function getAllPosts() {
-  return client.get(constants.backend_url + "/posts", {"Access-Control-Allow-Origin": "*","Content-Type":"application/json"});
+  return client.get(constants.backend_url + "/posts", {
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json",
+  });
 }
 
 export async function getAllTags() {
@@ -24,7 +27,7 @@ export async function savePost(post) {
 
 export async function uploadImage(image) {
   var data = new FormData();
-  data.append('image', image, image.name)
+  data.append("image", image, image.name);
   return client.post(constants.backend_url + "/images/upload", data);
 }
 
@@ -33,5 +36,9 @@ export async function getPostByTag(tag) {
 }
 
 export async function saveNewTag(tag) {
-  return client.post(constants.backend_url + "/tags", tag)
+  return client.post(constants.backend_url + "/tags", tag);
+}
+
+export async function search(query) {
+  return client.get(constants.backend_url + "/posts/search/" + query);
 }

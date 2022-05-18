@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   List,
   ListItem,
@@ -12,6 +12,23 @@ import * as API from "../../util/api";
 
 export const BlogNavigator = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    if (search.length > 2) {
+      API.search(search)
+        .then((response) => response.data)
+        .then((data) => {
+          console.log(data);
+          props.setBlogPosts(data);
+        });
+    } else {
+      API.getAllPosts()
+        .then((response) => response.data)
+        .then((data) => props.setBlogPosts(data))
+        .catch((error) => console.log(error));
+    }
+  }, [setSearch, search]);
 
   const createTag = () => {
     console.log("Setting modal to true");
@@ -26,8 +43,14 @@ export const BlogNavigator = (props) => {
       );
   };
 
+  const searchPosts = (event) => {
+    console.log("searching:", event.target.value, event.target.value.length);
+    setSearch(event.target.value);
+  };
+
   return (
     <div>
+      <TextField variant="outlined" label="Search" onChange={searchPosts} />
       <List component="nav">
         <ListItem button key={"Reset"}>
           <ListItemText onClick={() => props.setSelected("")}>All</ListItemText>

@@ -3,6 +3,7 @@ import { Paper, Grid, Divider } from "@material-ui/core";
 import { BlogPost } from "./BlogPost";
 import { BlogEditor } from "./BlogEditor";
 import * as API from "../../util/api";
+var constants = require("./../../util/constantVars");
 
 const BlogFeed = (props) => {
   const onSave = (content, tags) => {
@@ -28,9 +29,13 @@ const BlogFeed = (props) => {
       alignItems="center"
     >
       <Grid item lg={6} style={{ padding: "15px" }}>
-        <Paper style={{ spacing: "5px", padding: "5px" }}>
-          <BlogEditor onSave={onSave} availableTags={props.availableTags} />
-        </Paper>
+        {constants.local ? (
+          <Paper style={{ spacing: "5px", padding: "5px" }}>
+            <BlogEditor onSave={onSave} availableTags={props.availableTags} />
+          </Paper>
+        ) : (
+          <div />
+        )}
       </Grid>
       <Divider style={{ width: "70vw" }} />
       {props.blogPosts.map((post) => {

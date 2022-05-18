@@ -45,6 +45,7 @@ const App = (props) => {
             setSelected={setSelectedTopic}
             availableTags={availableTags}
             setAvailableTags={setAvailableTags}
+            setBlogPosts={setBlogPosts}
           />
         </Grid>
         <Grid item lg={9}>
