@@ -1,5 +1,5 @@
 import React from "react";
-import { Interweave} from "interweave";
+import { Interweave } from "interweave";
 import { Chip, Typography } from "@material-ui/core";
 
 const isTextComponent = (node) => {
@@ -41,6 +41,10 @@ export const BlogPost = (props) => {
       );
     }
 
+    if (node.tagName.toLowerCase() == "p") {
+      return <Typography style={{ padding: "20px" }}>{children}</Typography>;
+    }
+
     if (node.tagName.toLowerCase() === "img") {
       return (
         <img
@@ -55,20 +59,49 @@ export const BlogPost = (props) => {
       node.tagName.toLowerCase() === "pre" ||
       node.tagName.toLowerCase() === "code"
     ) {
+      return (
+        <div>
+          <code
+            style={{
+              padding: "20px",
+              backgroundColor: "#eee",
+              border: "1px",
+              display: "block",
+            }}
+          >
+            {children}
+          </code>
+        </div>
+      );
     }
   };
 
+  const formatDate = (date) => {
+    const parsedDate = new Date(Date.parse(date));
+    return parsedDate.toLocaleDateString("us-en", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
-    <div style={{ padding: "10px" }}>
+    <div style={{ padding: "10px", width: "100%" }}>
+      <Typography style={{ fontSize: "10px" }}>
+        {formatDate(props.state.post_date)}
+      </Typography>
       <Interweave
         transform={transformText}
-        style={{ FontFace: "Comfortaa" }}
+        style={{ FontFace: "Comfortaa", width: "100%" }}
         content={props.state.post_content}
       />
       <center>
+        <br />
         {props.state.tags.map((tag) => (
           <Chip label={tag.value} variant="outlined" key={tag.tag_id} />
         ))}
+        <br />
       </center>
     </div>
   );

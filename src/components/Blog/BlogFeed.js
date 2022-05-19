@@ -29,7 +29,7 @@ const BlogFeed = (props) => {
       justifyContent="flex-start"
       alignItems="center"
     >
-      <Grid item lg={6} style={{ padding: "15px" }}>
+      <Grid item lg={12} style={{ padding: "15px" }}>
         {constants.local ? (
           <Paper style={{ spacing: "5px", padding: "5px" }}>
             <BlogEditor onSave={onSave} availableTags={props.availableTags} />
@@ -38,11 +38,11 @@ const BlogFeed = (props) => {
           <div />
         )}
       </Grid>
-      <Divider style={{ width: "70vw" }} />
+      <Divider style={{ width: "70%" }} />
       {props.blogPosts.map((post) => {
         console.log("rendering post:", post);
         return (
-          <Grid item lg={6} key={post.post_id}>
+          <Grid item lg={6} key={post.post_id} style={{ width: "100%" }}>
             <BlogPost editable={false} state={post} />
             <Divider />
           </Grid>
