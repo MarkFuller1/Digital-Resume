@@ -6,7 +6,7 @@ const BlogHeader = () => {
     <center style={{ padding: "50px" }}>
       <img
         src="/Foghlaim.png"
-        style={{ maxWidth: "400", width: "100%", scale: "auto" }}
+        style={{ maxWidth: "400px", width: "100%", scale: "auto" }}
         alt="Title"
       />
     </center>
