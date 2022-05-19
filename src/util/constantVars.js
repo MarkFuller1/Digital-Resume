@@ -1,7 +1,7 @@
 let backend_url = "";
 let local = false;
 
-if (window.location.hostname === "localhost") {
+if (window.location.hostname === "localhost" || window.location.hostname.startsWith("192.168.")) {
   backend_url = "http://localhost:8080";
   local = true;
 } else {
