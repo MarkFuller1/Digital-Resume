@@ -18,6 +18,12 @@ const App = (props) => {
   }, []);
 
   useEffect(() => {
+    if(selectedTopic.length === 0){
+    API.getAllPosts()
+      .then((response) => response.data)
+      .then((data) => setBlogPosts(data))
+      .catch((error) => console.log(error));
+    }
     API.getPostByTag(selectedTopic)
       .then((response) => response.data)
       .then((data) => setBlogPosts(data))
