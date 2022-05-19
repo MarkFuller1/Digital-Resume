@@ -3,8 +3,12 @@ import React from "react";
 
 const BlogHeader = () => {
   return (
-    <center style={{padding:"50px"}}>
-        <img src="/Foghlaim.png" width={400} alt="Title"/>
+    <center style={{ padding: "50px" }}>
+      <img
+        src="/Foghlaim.png"
+        style={{ maxWidth: "400", width: "100%", scale: "auto" }}
+        alt="Title"
+      />
     </center>
   );
 };
