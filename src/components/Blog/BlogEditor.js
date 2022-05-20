@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import TagSelector from "./TagSelector";
 import * as API from "../../util/api";
 
@@ -48,15 +48,19 @@ export const BlogEditor = (props) => {
           },
         }}
       />
-      <TagSelector
-        availableTags={props.availableTags}
-        selectedTags={selectedTags}
-        // setTags={set}
-        setSelectedTags={setSelectedTags}
-      />
       <div style={{ padding: "15px", width: "50%" }}>
+        <TagSelector
+          availableTags={props.availableTags}
+          selectedTags={selectedTags}
+          // setTags={set}
+          setSelectedTags={setSelectedTags}
+        />
         <Button
-          style={{ spacing: "10px", width: "50%" }}
+          style={{
+            spacing: "10px",
+            width: "50%",
+            display: "inline-block",
+          }}
           onClick={handleSave}
           variant="contained"
         >
