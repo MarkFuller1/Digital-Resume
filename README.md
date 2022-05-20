@@ -1,5 +1,7 @@
 ## What is Foghlaim?
 
+![Foghlaim](/public/Foghlaim.png?raw=true)
+
 Foghlaim (verb): Irish for " to learn " 
 
 You know how (as a developer) you sometimes come across an issue, you google the thing and the first few results are already purple? Sometimes you remember what project you ran into the issue. But if youre a consultant like I am, you frequently dont have access to the old code bases. 
