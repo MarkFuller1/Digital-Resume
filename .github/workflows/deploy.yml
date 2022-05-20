@@ -11,11 +11,13 @@ jobs:
       - run: npm run build --if-present
 
   deploy:
-    - name: ssh into server and restart service
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{secrets.SSHHOST}}
-        username: ${{secrets.SSHUSERNAME}}
-        password: ${{secrets.SSHPASSWORD}}
-        port: ${{secrets.SSHPORT}}
-        script: echo ${{secrets.SSHPASSWORD}} | sudo -S systemctl restart raspi
+    runs-on: self-hosted
+    steps:
+      - name: ssh into server and restart service
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SSHHOST}}
+          username: ${{secrets.SSHUSERNAME}}
+          password: ${{secrets.SSHPASSWORD}}
+          port: ${{secrets.SSHPORT}}
+          script: echo ${{secrets.SSHPASSWORD}} | sudo -S systemctl restart raspi
