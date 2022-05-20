@@ -25,6 +25,7 @@ const App = (props) => {
 
   useEffect(() => {
     setPostsLoading(true);
+    console.log(selectedTopic.length === 0, selectedTopic);
     if (selectedTopic.length === 0) {
       setPostsLoading(true);
       API.getAllPosts()
@@ -32,13 +33,14 @@ const App = (props) => {
         .then((data) => setBlogPosts(data))
         .catch((error) => console.log(error))
         .finally(() => setPostsLoading(false));
+    } else {
+      setPostsLoading(true);
+      API.getPostByTag(selectedTopic)
+        .then((response) => response.data)
+        .then((data) => setBlogPosts(data))
+        .catch((error) => console.log(error))
+        .finally(() => setPostsLoading(false));
     }
-    setPostsLoading(true);
-    API.getPostByTag(selectedTopic)
-      .then((response) => response.data)
-      .then((data) => setBlogPosts(data))
-      .catch((error) => console.log(error))
-      .finally(() => setPostsLoading(false));
   }, [selectedTopic, setSelectedTopic]);
 
   useEffect(() => {
