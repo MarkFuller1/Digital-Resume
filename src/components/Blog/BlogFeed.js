@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Grid, Divider } from "@material-ui/core";
+import { Paper, Grid } from "@material-ui/core";
 import { BlogPost } from "./BlogPost";
 import { BlogEditor } from "./BlogEditor";
 import * as API from "../../util/api";

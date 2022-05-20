@@ -41,7 +41,7 @@ export const BlogPost = (props) => {
       );
     }
 
-    if (node.tagName.toLowerCase() == "p") {
+    if (node.tagName.toLowerCase() === "p") {
       return <Typography style={{ padding: "20px" }}>{children}</Typography>;
     }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
-import { Button, Grid } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import TagSelector from "./TagSelector";
 import * as API from "../../util/api";
 
