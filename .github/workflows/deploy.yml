@@ -11,7 +11,7 @@ jobs:
       - run: npm run build --if-present
 
   deploy:
-    -name: ssh into server and restart service
+    - name: ssh into server and restart service
       uses: appleboy/ssh-action@master
       with:
         host: ${{secrets.SSHHOST}}
