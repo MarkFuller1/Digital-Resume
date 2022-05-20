@@ -38,15 +38,13 @@ const BlogFeed = (props) => {
           <div />
         )}
       </Grid>
-      <Divider style={{ width: "100%" }} />
+      <hr class="solid" style={{ width: "100%", color: "#eee" }} />
       {props.blogPosts.map((post) => {
         console.log("rendering post:", post);
         return (
           <div style={{ width: "100%" }}>
-            {/* <Grid item lg={8} key={post.post_id} style={{ width: "100%" }}> */}
             <BlogPost editable={false} state={post} />
-            <Divider style={{ width: "100%" }} />
-            {/* </Grid> */}
+            <hr class="solid" style={{ width: "100%", color: "#eee" }} />
           </div>
         );
       })}
