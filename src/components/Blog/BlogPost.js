@@ -87,7 +87,7 @@ export const BlogPost = (props) => {
   };
 
   return (
-    <div style={{ padding: "10px", width: "100%" }}>
+    <div style={{ padding: "10px", width: "70%", margin: "auto" }}>
       <Typography style={{ fontSize: "10px" }}>
         {formatDate(props.state.post_date)}
       </Typography>
