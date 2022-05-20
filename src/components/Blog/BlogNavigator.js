@@ -12,7 +12,7 @@ import * as API from "../../util/api";
 
 var constants = require("../../util/constantVars");
 
-export const BlogNavigator = (props) => {
+export const BlogNavigator = React.memo((props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -30,7 +30,7 @@ export const BlogNavigator = (props) => {
         .then((data) => props.setBlogPosts(data))
         .catch((error) => console.log(error));
     }
-  }, [setSearch, search]);
+  }, [setSearch, search, props]);
 
   const createTag = () => {
     console.log("Setting modal to true");
@@ -105,6 +105,6 @@ export const BlogNavigator = (props) => {
       </Modal>
     </div>
   );
-};
+});
 
 export default BlogNavigator;
