@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
-import BlogHeader from "./Blog/BlogHeader";
-import BlogFeed from "./Blog/BlogFeed";
-import BlogNavigator from "./Blog/BlogNavigator";
 import { Grid } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+
 import * as API from "../util/api";
+
+import BlogFeed from "./Blog/BlogFeed";
+import Footer from "./Blog/Footer";
+import BlogHeader from "./Blog/BlogHeader";
+import BlogNavigator from "./Blog/BlogNavigator";
 
 const App = (props) => {
   const [selectedTopic, setSelectedTopic] = useState("");
@@ -75,6 +78,7 @@ const App = (props) => {
           )}
         </Grid>
       </Grid>
+      <Footer />
     </div>
   );
 };
