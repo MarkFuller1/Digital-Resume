@@ -8,7 +8,7 @@ import Footer from "./Blog/Footer";
 import BlogHeader from "./Blog/BlogHeader";
 import BlogNavigator from "./Blog/BlogNavigator";
 
-const App = (props) => {
+const MainPage = (props) => {
   const [selectedTopic, setSelectedTopic] = useState("");
   const [availableTags, setAvailableTags] = useState([]);
   const [blogPosts, setBlogPosts] = useState([]);
@@ -52,7 +52,7 @@ const App = (props) => {
   console.log("Selected:", selectedTopic);
 
   return (
-    <div>
+    <div style={props.style} className="MainPage">
       <Grid
         container
         direction="row"
@@ -85,4 +85,4 @@ const App = (props) => {
   );
 };
 
-export default App;
+export default MainPage;
