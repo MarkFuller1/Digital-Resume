@@ -52,57 +52,61 @@ export const BlogNavigator = React.memo((props) => {
 
   return (
     <div>
-      <TextField variant="outlined" label="Search" onChange={searchPosts} />
-      <List component="nav">
-        <ListItem button key={"Reset"}>
-          <ListItemText onClick={() => props.setSelected("")}>All</ListItemText>
-        </ListItem>
-        {props.availableTags.map((topic) => {
-          return (
-            <ListItem button key={topic}>
-              <ListItemText
-                onClick={(event) => {
-                  console.log("Clicked:", event.target.innerText);
-                  props.setSelected(event.target.innerText);
-                }}
-                value={topic}
-              >
-                <Typography>{topic}</Typography>
-              </ListItemText>
-            </ListItem>
-          );
-        })}
-        {constants.local ? (
-          <ListItem button key={"create"}>
-            <ListItemText onClick={createTag}>Create Tag</ListItemText>
+      <Paper style={{ padding: "5%" }}>
+        <TextField variant="outlined" label="Search" onChange={searchPosts} />
+        <List component="nav">
+          <ListItem button key={"Reset"}>
+            <ListItemText onClick={() => props.setSelected("")}>
+              All
+            </ListItemText>
           </ListItem>
-        ) : (
-          <div />
-        )}
-      </List>
-      <Modal
-        style={{ top: "50%", left: "50%" }}
-        open={isModalOpen}
-        onClose={() => {
-          isModalOpen(false);
-        }}
-      >
-        <Paper style={{ padding: "10px", spacing: "10px", width: "18%" }}>
-          <TextField
-            autoFocus
-            variant="outlined"
-            label="Tag Name"
-            onBlur={() => setIsModalOpen(false)}
-            onKeyDown={(event) => {
-              console.log(event.target.value);
-              if (event.key === "Enter") {
-                setIsModalOpen(false);
-                saveNewTag(event.target.value);
-              }
-            }}
-          />
-        </Paper>
-      </Modal>
+          {props.availableTags.map((topic) => {
+            return (
+              <ListItem button key={topic}>
+                <ListItemText
+                  onClick={(event) => {
+                    console.log("Clicked:", event.target.innerText);
+                    props.setSelected(event.target.innerText);
+                  }}
+                  value={topic}
+                >
+                  <Typography>{topic}</Typography>
+                </ListItemText>
+              </ListItem>
+            );
+          })}
+          {constants.local ? (
+            <ListItem button key={"create"}>
+              <ListItemText onClick={createTag}>Create Tag</ListItemText>
+            </ListItem>
+          ) : (
+            <div />
+          )}
+        </List>
+        <Modal
+          style={{ top: "50%", left: "50%" }}
+          open={isModalOpen}
+          onClose={() => {
+            isModalOpen(false);
+          }}
+        >
+          <Paper style={{ padding: "10px", spacing: "10px", width: "18%" }}>
+            <TextField
+              autoFocus
+              variant="outlined"
+              label="Tag Name"
+              onBlur={() => setIsModalOpen(false)}
+              onKeyDown={(event) => {
+                console.log(event.target.value);
+                if (event.key === "Enter") {
+                  setIsModalOpen(false);
+                  saveNewTag(event.target.value);
+                }
+              }}
+            />
+          </Paper>
+        </Modal>
+      </Paper>
     </div>
   );
 });

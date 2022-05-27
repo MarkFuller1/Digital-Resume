@@ -1,8 +1,8 @@
 import { ThemeProvider } from "@material-ui/core";
 import React from "react";
-import App from "./components/App";
 import theme from "./theme";
 import { createRoot } from "react-dom/client";
+import App from "./App";
 
 const container = document.getElementById("root");
 const root = createRoot(container);

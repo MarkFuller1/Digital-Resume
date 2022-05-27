@@ -22,13 +22,28 @@ const BlogFeed = (props) => {
       .catch((error) => console.log(error));
   };
 
+  const getCurrentHeight = () => {
+    var body = document.body,
+      html = document.documentElement;
+
+    return Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
+  };
+
   return (
     <Grid
       container
       direction="column"
       justifyContent="flex-start"
       alignItems="center"
+      className="blogFeed"
     >
+      {console.log("canvas height:", getCurrentHeight())}
       <Grid item lg={12} style={{ padding: "15px" }}>
         {constants.local ? (
           <Paper style={{ spacing: "5px", padding: "5px" }}>

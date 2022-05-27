@@ -1,6 +1,6 @@
 import React from "react";
 import { Interweave } from "interweave";
-import { Chip, Typography } from "@material-ui/core";
+import { Chip, Typography, Paper } from "@material-ui/core";
 
 const isTextComponent = (node) => {
   return (
@@ -88,21 +88,23 @@ export const BlogPost = (props) => {
 
   return (
     <div style={{ padding: "10px", width: "70%", margin: "auto" }}>
-      <Typography style={{ fontSize: "10px" }}>
-        {formatDate(props.state.post_date)}
-      </Typography>
-      <Interweave
-        transform={transformText}
-        style={{ FontFace: "Comfortaa", width: "100%" }}
-        content={props.state.post_content}
-      />
-      <center>
-        <br />
-        {props.state.tags.map((tag) => (
-          <Chip label={tag.value} variant="outlined" key={tag.tag_id} />
-        ))}
-        <br />
-      </center>
+      <Paper style={{ padding: "5%" }}>
+        <Typography style={{ fontSize: "10px" }}>
+          {formatDate(props.state.post_date)}
+        </Typography>
+        <Interweave
+          transform={transformText}
+          style={{ FontFace: "Comfortaa", width: "100%" }}
+          content={props.state.post_content}
+        />
+        <center>
+          <br />
+          {props.state.tags.map((tag) => (
+            <Chip label={tag.value} variant="outlined" key={tag.tag_id} />
+          ))}
+          <br />
+        </center>
+      </Paper>
     </div>
   );
 };
