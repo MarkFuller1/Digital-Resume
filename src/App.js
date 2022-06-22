@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ReactP5Wrapper } from "react-p5-wrapper";
-import { Button, Switch } from "@material-ui/core";
+import { Switch } from "@material-ui/core";
 import MainPage from "./components/MainPage";
 
 import sketch from "./components/p5/sketch";

@@ -41,7 +41,7 @@ export default class Particle {
     var y = this.p.floor(this.pos.y / c.scl);
     var index = x + y * c.cols;
     var force = vectors[index];
-    if (force === undefined || force == null || force == "undefined") {
+    if (force === undefined || force === null || force === "undefined") {
       force = 0;
     }
     //console.log(force);
