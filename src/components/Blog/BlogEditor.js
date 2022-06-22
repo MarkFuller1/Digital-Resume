@@ -48,15 +48,19 @@ export const BlogEditor = (props) => {
           },
         }}
       />
-      <TagSelector
-        availableTags={props.availableTags}
-        selectedTags={selectedTags}
-        // setTags={set}
-        setSelectedTags={setSelectedTags}
-      />
       <div style={{ padding: "15px", width: "50%" }}>
+        <TagSelector
+          availableTags={props.availableTags}
+          selectedTags={selectedTags}
+          // setTags={set}
+          setSelectedTags={setSelectedTags}
+        />
         <Button
-          style={{ spacing: "10px", width: "50%" }}
+          style={{
+            spacing: "10px",
+            width: "50%",
+            display: "inline-block",
+          }}
           onClick={handleSave}
           variant="contained"
         >

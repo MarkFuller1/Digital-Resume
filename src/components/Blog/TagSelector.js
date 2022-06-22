@@ -16,22 +16,26 @@ const TagSelector = (props) => {
   };
 
   const handleDeleteTag = (event) => {
-    console.log("tag selector delete", event.target.value);
-    props.setSelectedTags((previous) =>
-      previous.filter((entry) => entry === event.target.value)
-    );
+    props.setSelectedTags((previous) => {
+      var previousTemp = [...previous];
+      return previousTemp.filter(
+        (entry) => entry.value !== event.target.textContent
+      );
+    });
   };
 
+  console.log("Tag:", props.selectedTags);
   return (
-    <div style={{ width: "8vw" }}>
+    <div style={{ width: "8vw", display: "inline-block", padding: "15px" }}>
       {props.availableTags.length > 0 ? (
         <Select
           label="Add Tags"
           onChange={handleTagSelector}
           value=""
-          style={{ width: "100%" }}
+          style={{ width: "100%", display: "inline-block" }}
         >
           {props.availableTags.map((tag) => {
+            console.log("Displaying tag options:", tag);
             return (
               <MenuItem value={tag} key={tag}>
                 {tag}
@@ -43,7 +47,12 @@ const TagSelector = (props) => {
         <div />
       )}
       {props.selectedTags.map((tag) => (
-        <Chip label={tag.value} variant="outlined" onClick={handleDeleteTag} />
+        <Chip
+          label={tag.value}
+          key={tag.value}
+          variant="outlined"
+          onClick={handleDeleteTag}
+        />
       ))}
     </div>
   );

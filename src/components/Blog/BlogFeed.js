@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Grid, Divider } from "@material-ui/core";
+import { Paper, Grid } from "@material-ui/core";
 import { BlogPost } from "./BlogPost";
 import { BlogEditor } from "./BlogEditor";
 import * as API from "../../util/api";
@@ -22,14 +22,29 @@ const BlogFeed = (props) => {
       .catch((error) => console.log(error));
   };
 
+  const getCurrentHeight = () => {
+    var body = document.body,
+      html = document.documentElement;
+
+    return Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
+  };
+
   return (
     <Grid
       container
       direction="column"
       justifyContent="flex-start"
       alignItems="center"
+      className="blogFeed"
     >
-      <Grid item lg={6} style={{ padding: "15px" }}>
+      {console.log("canvas height:", getCurrentHeight())}
+      <Grid item lg={12} style={{ padding: "15px" }}>
         {constants.local ? (
           <Paper style={{ spacing: "5px", padding: "5px" }}>
             <BlogEditor onSave={onSave} availableTags={props.availableTags} />
@@ -38,14 +53,14 @@ const BlogFeed = (props) => {
           <div />
         )}
       </Grid>
-      <Divider style={{ width: "70vw" }} />
+      <hr class="solid" style={{ width: "100%", color: "#eee" }} />
       {props.blogPosts.map((post) => {
         console.log("rendering post:", post);
         return (
-          <Grid item lg={6} key={post.post_id}>
+          <div style={{ width: "100%" }}>
             <BlogPost editable={false} state={post} />
-            <Divider />
-          </Grid>
+            <hr class="solid" style={{ width: "100%", color: "#eee" }} />
+          </div>
         );
       })}
     </Grid>
